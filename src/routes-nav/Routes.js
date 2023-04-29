@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Navigate } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
 import CompanyList from "../companies/CompanyList";
 import JobList from "../jobs/JobList";
@@ -53,7 +53,7 @@ function Routes({ login, signup }) {
           <ProfileForm />
         </PrivateRoute>
 
-        <Redirect to="/" />
+        <Navigate to="/" />
       </Switch>
     </div>
   );
