@@ -47,5 +47,6 @@
   },
   "devDependencies": {
     "babel-plugin-transform-inline-environment-variables": "^0.4.4"
-  }
+  },
+  "proxy": "http://localhost:3001/backend_jobly"
 }
