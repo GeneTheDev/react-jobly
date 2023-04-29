@@ -6,7 +6,7 @@ import JobList from "../jobs/JobList";
 import CompanyDetail from "../companies/CompanyDetail";
 import LoginForm from "../auth/LoginForm";
 import ProfileForm from "../profiles/ProfileForm";
-import SignupForm from "../auth/SignupForm";
+import SignupForm from "../auth/SignUpForm";
 import PrivateRoute from "./PrivateRoute";
 
 /** site routes
