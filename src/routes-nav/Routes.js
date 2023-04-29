@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, Navigate } from "react-router-dom";
+import { Route as RouterSwitch, Navigate } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
 import CompanyList from "../companies/CompanyList";
 import JobList from "../jobs/JobList";
@@ -24,7 +24,7 @@ function Routes({ login, signup }) {
 
   return (
     <div className="pt-5">
-      <Switch>
+      <RouterSwitch>
         <Route exact path="/">
           <Homepage />
         </Route>
@@ -54,7 +54,7 @@ function Routes({ login, signup }) {
         </PrivateRoute>
 
         <Navigate to="/" />
-      </Switch>
+      </RouterSwitch>
     </div>
   );
 }
