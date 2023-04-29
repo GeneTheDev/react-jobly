@@ -25,17 +25,17 @@ function Routes({ login, signup }) {
   return (
     <div className="pt-5">
       <RouterSwitch>
-        <Route exact path="/">
+        <Routes exact path="/">
           <Homepage />
-        </Route>
+        </Routes>
 
-        <Route exact path="/login">
+        <Routes exact path="/login">
           <LoginForm login={login} />
-        </Route>
+        </Routes>
 
-        <Route exact path="/signup">
+        <Routes exact path="/signup">
           <SignupForm signup={signup} />
-        </Route>
+        </Routes>
 
         <PrivateRoute exact path="/companies">
           <CompanyList />
