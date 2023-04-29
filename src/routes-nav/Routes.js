@@ -1,5 +1,5 @@
 import React from "react";
-import { Route as RouterSwitch, Navigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Homepage from "../homepage/Homepage";
 import CompanyList from "../companies/CompanyList";
 import JobList from "../jobs/JobList";
@@ -15,7 +15,7 @@ import PrivateRoute from "./PrivateRoute";
  * visiting a non-existant route redirects to the homepage
  */
 
-function Routes({ login, signup }) {
+function AppRoutes({ login, signup }) {
   console.debug(
     "Routes",
     `login=${typeof login}`,
@@ -24,39 +24,45 @@ function Routes({ login, signup }) {
 
   return (
     <div className="pt-5">
-      <RouterSwitch>
-        <Routes exact path="/">
-          <Homepage />
-        </Routes>
-
-        <Routes exact path="/login">
-          <LoginForm login={login} />
-        </Routes>
-
-        <Routes exact path="/signup">
-          <SignupForm signup={signup} />
-        </Routes>
-
-        <PrivateRoute exact path="/companies">
-          <CompanyList />
-        </PrivateRoute>
-
-        <PrivateRoute exact path="/jobs">
-          <JobList />
-        </PrivateRoute>
-
-        <PrivateRoute exact path="/companies/:handle">
-          <CompanyDetail />
-        </PrivateRoute>
-
-        <PrivateRoute path="/profile">
-          <ProfileForm />
-        </PrivateRoute>
-
-        <Navigate to="/" />
-      </RouterSwitch>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/login" element={<LoginForm login={login} />} />
+        <Route path="/signup" element={<SignupForm signup={signup} />} />
+        <Route
+          path="/companies"
+          element={
+            <PrivateRoute>
+              <CompanyList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/jobs"
+          element={
+            <PrivateRoute>
+              <JobList />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/companies/:handle"
+          element={
+            <PrivateRoute>
+              <CompanyDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <PrivateRoute>
+              <ProfileForm />
+            </PrivateRoute>
+          }
+        />
+      </Routes>
     </div>
   );
 }
 
-export default Routes;
+export default AppRoutes;
