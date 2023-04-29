@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Alert from "../common/Alert";
 
 function LoginForm({ login }) {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -24,7 +24,7 @@ function LoginForm({ login }) {
     evt.preventDefault();
     let result = await login(formData);
     if (result.success) {
-      history.push("/companies");
+      navigate("/companies");
     } else {
       setFormErrors(result.errors);
     }
@@ -53,7 +53,18 @@ function LoginForm({ login }) {
                   required
                 />
               </div>
-
+              <div className="form-group">
+                <label>Password</label>
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  value={formData.password}
+                  onChange={handleChange}
+                  autoComplete="current-password"
+                  required
+                />
+              </div>
               {formErrors.length ? (
                 <Alert type="danger" messages={formErrors} />
               ) : null}
