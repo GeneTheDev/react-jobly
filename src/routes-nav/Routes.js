@@ -9,12 +9,6 @@ import ProfileForm from "../profiles/ProfileForm";
 import SignupForm from "../auth/SignUpForm";
 import PrivateRoute from "./PrivateRoute";
 
-/** site routes
- * parts of site should only be visitable when logged in
- *
- * visiting a non-existant route redirects to the homepage
- */
-
 function AppRoutes({ login, signup }) {
   console.debug(
     "Routes",
@@ -29,36 +23,17 @@ function AppRoutes({ login, signup }) {
         <Route path="/login" element={<LoginForm login={login} />} />
         <Route path="/signup" element={<SignupForm signup={signup} />} />
         <Route
-          path="/companies"
-          element={
-            <PrivateRoute>
-              <CompanyList />
-            </PrivateRoute>
-          }
+          path="/companies//*"
+          element={<PrivateRoute component={CompanyList} />}
         />
-        <Route
-          path="/jobs"
-          element={
-            <PrivateRoute>
-              <JobList />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/jobs/*" element={<PrivateRoute component={JobList} />} />
         <Route
           path="/companies/:handle"
-          element={
-            <PrivateRoute>
-              <CompanyDetail />
-            </PrivateRoute>
-          }
+          element={<PrivateRoute component={CompanyDetail} />}
         />
         <Route
-          path="/profile"
-          element={
-            <PrivateRoute>
-              <ProfileForm />
-            </PrivateRoute>
-          }
+          path="/profile/*"
+          element={<PrivateRoute component={ProfileForm} />}
         />
       </Routes>
     </div>
