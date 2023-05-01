@@ -12,7 +12,7 @@ function CompanyCard({ name, description, logoUrl, handle }) {
         <h6 className="card-title">
           {name}
           {logoUrl && (
-            <img src={logoUrl} alt={name} className="float-right ml-5" />
+            <img src={logoUrl} alt={`${name} logo`} className="company-logo" />
           )}
         </h6>
         <p>
