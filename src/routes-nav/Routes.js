@@ -23,7 +23,7 @@ function AppRoutes({ login, signup }) {
         <Route path="/login" element={<LoginForm login={login} />} />
         <Route path="/signup" element={<SignupForm signup={signup} />} />
         <Route
-          path="/companies//*"
+          path="/companies/*"
           element={<PrivateRoute component={CompanyList} />}
         />
         <Route path="/jobs/*" element={<PrivateRoute component={JobList} />} />

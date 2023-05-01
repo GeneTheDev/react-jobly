@@ -15,7 +15,7 @@ function CompanyList() {
   }, []);
 
   //   Triggered by search form; reloads companies
-  async function search(name) {
+  async function search(name = "") {
     let companies = await JoblyApi.getCompanies(name);
     setCompanies(companies);
   }
