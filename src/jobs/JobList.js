@@ -9,6 +9,7 @@ function JobList() {
   console.debug("JobList");
 
   const [jobs, setJobs] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(function getAllJobsOnMount() {
     console.debug("JobList useEffect getAllJobsOnMount");
@@ -17,8 +18,18 @@ function JobList() {
 
   // triggered by search form ; reloads jobs
   async function search(title) {
-    let jobs = await JoblyApi.getJobs(title);
-    setJobs(jobs);
+    try {
+      let jobs = await JoblyApi.getJobs(title);
+      setJobs(jobs);
+      setError(null);
+    } catch (err) {
+      setError(err.message || "Error fetching jobs");
+      setJobs([]);
+    }
+  }
+
+  if (error) {
+    return <div className="alert alert-danger">{error}</div>;
   }
 
   if (!jobs) return <LoadingSpinner />;
@@ -29,7 +40,7 @@ function JobList() {
       {jobs.length ? (
         <JobCardList jobs={jobs} />
       ) : (
-        <p>Sorry , no results were found!</p>
+        <p>Sorry, no results were found!</p>
       )}
     </div>
   );
