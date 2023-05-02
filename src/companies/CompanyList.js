@@ -14,10 +14,10 @@ function CompanyList() {
     search();
   }, []);
 
-  //   Triggered by search form; reloads companies
-  async function search(name = "") {
-    let companies = await JoblyApi.getCompanies(name);
-    console.log("Companies from API:", companies);
+  // Triggered by search form; reloads companies
+  async function search(searchTerm = "") {
+    const searchParams = searchTerm ? { name: searchTerm } : {};
+    let companies = await JoblyApi.getCompanies(searchParams);
     setCompanies(companies);
   }
 

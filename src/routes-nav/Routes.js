@@ -22,19 +22,16 @@ function AppRoutes({ login, signup }) {
         <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<LoginForm login={login} />} />
         <Route path="/signup" element={<SignupForm signup={signup} />} />
-        <Route
-          path="/companies/*"
-          element={<PrivateRoute component={CompanyList} />}
-        />
-        <Route path="/jobs/*" element={<PrivateRoute component={JobList} />} />
-        <Route
-          path="/companies/:handle"
-          element={<PrivateRoute component={CompanyDetail} />}
-        />
-        <Route
-          path="/profile/*"
-          element={<PrivateRoute component={ProfileForm} />}
-        />
+        <Route path="/companies" element={<PrivateRoute />}>
+          <Route index element={<CompanyList />} />
+          <Route path=":handle" element={<CompanyDetail />} />
+        </Route>
+        <Route path="/jobs" element={<PrivateRoute />}>
+          <Route index element={<JobList />} />
+        </Route>
+        <Route path="/profile" element={<PrivateRoute />}>
+          <Route index element={<ProfileForm />} />
+        </Route>
       </Routes>
     </div>
   );
