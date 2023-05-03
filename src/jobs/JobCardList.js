@@ -4,6 +4,10 @@ import JobCard from "./JobCard";
 function JobCardList({ jobs, apply }) {
   console.debug("JobCardList", "jobs=", jobs);
 
+  if (!jobs) {
+    return null;
+  }
+
   return (
     <div className="JobCardList">
       {jobs.map((job) => (
