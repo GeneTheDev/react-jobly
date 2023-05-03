@@ -49,5 +49,5 @@
   "devDependencies": {
     "babel-plugin-transform-inline-environment-variables": "^0.4.4"
   },
-  "proxy": "http://localhost:5432"
+  "proxy": "http://localhost:3001"
 }

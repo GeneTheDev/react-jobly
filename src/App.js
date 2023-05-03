@@ -89,7 +89,7 @@ function App() {
   }
 
   // Apply to a job
-  function applyTojob(id) {
+  function applyToJob(id) {
     if (hasAppliedToJob(id)) return;
     JoblyApi.applyToJob(currentUser.username, id);
     setApplicationIds(new Set([...applicationIds, id]));
@@ -100,7 +100,7 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider
-        value={{ currentUser, setCurrentUser, hasAppliedToJob, applyTojob }}
+        value={{ currentUser, setCurrentUser, hasAppliedToJob, applyToJob }}
       >
         <div className="App">
           <Navigation logout={logout} />

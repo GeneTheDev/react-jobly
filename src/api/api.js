@@ -57,7 +57,16 @@ class JoblyApi {
 
   // apply to a job
   static async applyToJob(username, id) {
-    await this.request(`users/${username}/jobs/${id}`, {}, "post");
+    try {
+      const result = await this.request(
+        `users/${username}/jobs/${id}`,
+        {},
+        "post"
+      );
+      return result;
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   // Get token for login from username, password
