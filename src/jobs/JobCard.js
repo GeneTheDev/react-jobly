@@ -2,13 +2,12 @@ import React, { useContext, useState } from "react";
 import "./JobCard.css";
 import UserContext from "../auth/UserContext";
 
-// Show limited information about a job
-
 function JobCard({ id, title, salary, equity, companyName }) {
   console.debug("JobCard");
 
   const { hasAppliedToJob, applyToJob } = useContext(UserContext);
   const [applied, setApplied] = useState();
+  const [errorMessage, setErrorMessage] = useState("");
 
   React.useEffect(
     function updateAppliedStatus() {
@@ -21,8 +20,12 @@ function JobCard({ id, title, salary, equity, companyName }) {
 
   async function handleApply(evt) {
     if (hasAppliedToJob(id)) return;
-    applyToJob(id);
-    setApplied(true);
+    try {
+      await applyToJob(id);
+      setApplied(true);
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   }
 
   return (
@@ -42,6 +45,9 @@ function JobCard({ id, title, salary, equity, companyName }) {
             <small>Equity: {equity}</small>
           </div>
         )}
+        {errorMessage && (
+          <div className="alert alert-danger">{errorMessage}</div>
+        )}
         <button
           className="btn btn-danger font-weight-bold text-uppercase float-right"
           onClick={handleApply}
@@ -54,7 +60,6 @@ function JobCard({ id, title, salary, equity, companyName }) {
   );
 }
 
-// renders integer salary
 function formatSalary(salary) {
   const digitsRev = [];
   const salaryStr = salary.toString();
