@@ -1,8 +1,22 @@
-# Getting Started with Create React App
+# Jobly
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project description
+Features:
+- Register and login authentication
+- Applying for job 
+- Viewing Jobs
+- Profile editing
+
+
+Technologies used : 
+- Postgresql
+- Express
+- React
+- Node
+
+I created the following app using React for my client side so that way I can demonstrate my knowledge on rendering components and be able to use them in other parts of my code, inlcuding other react components. 
 
 In the project directory, you can run:
 
