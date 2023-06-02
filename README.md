@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Project description
 Features:
 - Register and login authentication
-- Applying for job 
+- Applying for more then one job 
 - Viewing Jobs
 - Profile editing
 
